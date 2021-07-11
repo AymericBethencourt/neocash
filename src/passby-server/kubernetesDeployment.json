@@ -1,0 +1,22 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": { "name": "neocash-passby" },
+  "spec": {
+    "replicas": 3,
+    "selector": { "matchLabels": { "app": "neocash-passby" } },
+    "template": {
+      "metadata": { "labels": { "app": "neocash-passby" } },
+      "spec": {
+        "terminationGracePeriodSeconds": 30,
+        "containers": [
+          {
+            "name": "neocash-passby",
+            "image": "registry.digitalocean.com/neut/neocash-passby",
+            "imagePullPolicy": "Always"
+          }
+        ]
+      }
+    }
+  }
+}
