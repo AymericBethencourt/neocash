@@ -1,0 +1,98 @@
+// prettier-ignore
+import { LinkGrid, LinkInputGrid, LinkStyled } from './Link.style'
+import { Button } from 'app/App.components/Button/Button.controller'
+import { Input } from 'app/App.components/Input/Input.controller'
+import axios from 'axios'
+import * as React from 'react'
+import { useLocation } from 'react-router'
+import { subTextColor } from 'styles'
+import { useDispatch } from 'react-redux'
+import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
+import { SUCCESS, ERROR } from 'app/App.components/Toaster/Toaster.constants'
+import { useState } from 'react'
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search)
+}
+
+export const Link = () => {
+  let query = useQuery()
+  const username = query.get('username') || '(unknown)'
+  let [url, setUrl] = React.useState('')
+  const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
+
+  async function linkUsername() {
+    try {
+      setLoading(true)
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/set-address`, {
+        username,
+        url,
+      })
+      console.log(response)
+      setLoading(false)
+      dispatch(showToaster(SUCCESS, 'DONE', 'Account linked'))
+    } catch (error) {
+      setLoading(false)
+      dispatch(showToaster(ERROR, error.message, ''))
+      console.error(error)
+    }
+  }
+
+  return (
+    <LinkStyled>
+      <div>
+        This user, <b>{username}</b>, has not yet linked an Neo N3 address to his account. If you are the owner of this
+        account, you can link your Neo N3 address as follows:
+      </div>
+
+      <LinkGrid>
+        <svg>
+          <use xlinkHref="/icons/sprites.svg#twitter" />
+        </svg>
+        <div>
+          To link your Twitter account, make a tweet with your Ethereum address pasted into the contents (surrounding
+          text doesn't matter). Copy-paste the tweets URL into the above input box and fire away!
+        </div>
+      </LinkGrid>
+
+      <LinkGrid>
+        <svg>
+          <use xlinkHref="/icons/sprites.svg#facebook" />
+        </svg>
+        <div>Comming soon... </div>
+      </LinkGrid>
+
+      <LinkGrid>
+        <svg>
+          <use xlinkHref="/icons/sprites.svg#youtube" />
+        </svg>
+        <div>Comming soon... </div>
+      </LinkGrid>
+
+      <LinkInputGrid>
+        <Input
+          icon="link"
+          name="url"
+          placeholder="URL of Tweet, Facebook post or Youtube video"
+          type="text"
+          onChange={(e) => {
+            setUrl(e.target.value)
+          }}
+          value={url}
+          onBlur={() => {}}
+          inputStatus={undefined}
+          errorMessage={undefined}
+        />
+        <Button
+          type="button"
+          text="Link"
+          icon="address"
+          loading={loading}
+          onClick={() => linkUsername()}
+          color={subTextColor}
+        />
+      </LinkInputGrid>
+    </LinkStyled>
+  )
+}

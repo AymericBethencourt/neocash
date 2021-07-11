@@ -1,0 +1,22 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": { "name": "neocash-frontend" },
+  "spec": {
+    "replicas": 3,
+    "selector": { "matchLabels": { "app": "neocashfrontend" } },
+    "template": {
+      "metadata": { "labels": { "app": "neocashfrontend" } },
+      "spec": {
+        "terminationGracePeriodSeconds": 30,
+        "containers": [
+          {
+            "name": "neocashfrontend",
+            "image": "registry.digitalocean.com/neutrino/neocashfrontend",
+            "imagePullPolicy": "Always"
+          }
+        ]
+      }
+    }
+  }
+}

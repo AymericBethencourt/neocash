@@ -1,0 +1,19 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "neocash-frontend-service"
+  },
+  "spec": {
+    "type": "LoadBalancer",
+    "selector": { "app": "neocashfrontend" },
+    "ports": [
+      {
+        "protocol": "TCP",
+        "port": 80,
+        "targetPort": 80,
+        "name": "http"
+      }
+    ]
+  }
+}
