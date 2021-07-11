@@ -1,0 +1,12 @@
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/bin/Debug/net5.0/NeoCashContract.deps.json
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/bin/Debug/net5.0/NeoCashContract.dll
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/bin/Debug/net5.0/ref/NeoCashContract.dll
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/bin/Debug/net5.0/NeoCashContract.pdb
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.csproj.AssemblyReference.cache
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.AssemblyInfoInputs.cache
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.AssemblyInfo.cs
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.csproj.CoreCompileInputs.cache
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.dll
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/ref/NeoCashContract.dll
+/Users/lol/apps/fun/neocash/contracts/NeoCash/src/obj/Debug/net5.0/NeoCashContract.pdb

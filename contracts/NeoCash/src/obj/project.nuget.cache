@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FwZ89IIyXaRgF4gaXYM26ye/HP72TyxjprHpMVly1fxYIIzEC6RgLQb6ngFsA1GvZZn31VMt5rjaD+9AM/1tmg==",
+  "success": true,
+  "projectFilePath": "/Users/lol/apps/fun/neocash/contracts/NeoCash/src/NeoCashContract.csproj",
+  "expectedPackageFiles": [
+    "/Users/lol/.nuget/packages/neo.smartcontract.framework/3.0.0-rc3/neo.smartcontract.framework.3.0.0-rc3.nupkg.sha512"
+  ],
+  "logs": []
+}

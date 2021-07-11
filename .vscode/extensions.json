@@ -26,6 +26,8 @@
     "jpoissonnier.vscode-styled-components",
     "cssho.vscode-svgviewer",
     "akamud.vscode-theme-onedark",
-    "VisualStudioExptTeam.vscodeintellicode"
+    "VisualStudioExptTeam.vscodeintellicode",
+    "ms-dotnettools.csharp",
+    "formulahendry.dotnet-test-explorer"
   ]
 }
