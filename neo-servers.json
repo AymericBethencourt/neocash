@@ -1,0 +1,9 @@
+{
+  "neo-rpc-uris": [
+    "http://localhost:20332",
+    "https://neo3-testnet.neoline.vip"
+  ],
+  "neo-blockchain-names": {
+    "0x0000000000000000000000000000000000000000000000000000000000000000": "My Private Blockchain"
+  }
+}

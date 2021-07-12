@@ -1,0 +1,9 @@
+[
+  {
+    "contract": "NeoCashContract",
+    "operation": "getAddress",
+    "args": [
+      "Hello"
+    ]
+  }
+]

@@ -41,7 +41,7 @@ namespace NeoCashTests
         }
 
         [Fact]
-        public void can_change_number()
+        public void can_change_address()
         {
             var settings = chain.GetProtocolSettings();
             var alice = chain.GetDefaultAccount("alice").ToScriptHash(settings.AddressVersion);
@@ -52,7 +52,7 @@ namespace NeoCashTests
             // loads them into the engine and executes it 
             using var engine = new TestApplicationEngine(snapshot, settings, alice);
 
-            engine.ExecuteScript<NeoCashContract>(c => c.changeNumber(42));
+            engine.ExecuteScript<NeoCashContract>(c => c.changeAddress("Hello World", "NYgdhHWkXUFoN799qhgDNHWDZkjAJZ2L7K"));
 
             engine.State.Should().Be(VMState.HALT);
             engine.ResultStack.Should().HaveCount(1);
@@ -60,7 +60,7 @@ namespace NeoCashTests
 
             // ensure that notification is triggered
             engine.Notifications.Should().HaveCount(1);
-            engine.Notifications[0].EventName.Should().Be("NumberChanged");
+            engine.Notifications[0].EventName.Should().Be("AddressChanged");
             engine.Notifications[0].State[0].Should().BeEquivalentTo(alice);
             engine.Notifications[0].State[1].Should().BeEquivalentTo(42);
 

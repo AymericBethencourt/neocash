@@ -1,0 +1,10 @@
+[
+  {
+    "contract": "NeoCashContract",
+    "operation": "changeAddress",
+    "args": [
+      "Hello",
+      "NYgdhHWkXUFoN799qhgDNHWDZkjAJZ2L7K"
+    ]
+  }
+]

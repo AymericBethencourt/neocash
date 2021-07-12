@@ -42,7 +42,7 @@ export const Buy = () => {
 
   // TODO: implement for all pairs
   // @ts-ignore
-  const rate = data && data.RAW ? data.RAW.GAS.USDT.PRICE : 0
+  const rate = data && data.RAW && data.RAW[currency] ? data.RAW[currency].USDT.PRICE : 0
 
   // useEffect(() => {
   //   window.addEventListener('NEOLine.N3.EVENT.READY', () => {
@@ -54,18 +54,85 @@ export const Buy = () => {
   //   //@ts-ignore
   // }, [])
 
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
+
   useEffect(() => {
     async function getAddress() {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/get-address`, {
-          username,
-        })
-        console.log(response.data.address)
-        setAddress(response.data.address)
+        setLoading(true)
+
+        await sleep(3000)
+
+        //@ts-ignore
+        const neolineN3 = new NEOLineN3.Init()
+
+        const bal = await neolineN3.getBalance()
+        if (Object.keys(bal).length <= 0) throw new Error('No address available')
+
+        const scriptHash = await neolineN3.AddressToScriptHash({ address: Object.keys(bal)[0] })
+
+        console.log(scriptHash)
+
+        // neolineN3
+        //   .invoke({
+        //     scriptHash: '0x333da375c2bac783276a953dd65028771e667e26',
+        //     operation: 'getAddress',
+        //     args: [
+        //       {
+        //         type: 'ByteArray',
+        //         value: 'test2',
+        //       },
+        //     ],
+        //     fee: '0.01',
+        //     broadcastOverride: false,
+        //     signers: [
+        //       {
+        //         account: scriptHash.scriptHash,
+        //         scopes: 1,
+        //       },
+        //     ],
+        //   })
+        //   .then((result: any) => {
+        //     setLoading(false)
+        //     console.log(result)
+        //     dispatch(showToaster(SUCCESS, 'Account found!', result.txid))
+        //   })
+        neolineN3
+          .getStorage({
+            scriptHash: '0x333da375c2bac783276a953dd65028771e667e26',
+            key: 'ContractStorage',
+          })
+          .then((result: any) => {
+            const value = result
+            console.log('Storage value: ' + value)
+          })
+          .catch(({ type, description, data }: any) => {
+            dispatch(showToaster(ERROR, type, description))
+            setLoading(false)
+            console.log({ type, description, data })
+            switch (type) {
+              case 'NO_PROVIDER':
+                console.log('No provider available.')
+                break
+              case 'RPC_ERROR':
+                console.log('There was an error when broadcasting this transaction to the network.')
+                break
+              case 'MALFORMED_INPUT':
+                console.log('The receiver address provided is not valid.')
+                break
+              case 'CANCELED':
+                console.log('The user has canceled this transaction.')
+                break
+              case 'INSUFFICIENT_FUNDS':
+                console.log('The user has insufficient funds to execute this transaction.')
+                break
+            }
+          })
       } catch (e) {
-        dispatch(showToaster(ERROR, 'Address not found', 'This user must first link an Neo N3 address'))
-        console.error(e)
-        // alert(e.message)
+        setLoading(false)
+        dispatch(showToaster(ERROR, 'Please install Neoline', e.message))
       }
     }
 

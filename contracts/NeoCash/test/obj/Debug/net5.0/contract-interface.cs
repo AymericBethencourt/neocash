@@ -13,11 +13,12 @@ namespace NeoCashTests {
     #endif
     [System.ComponentModel.Description("NeoCashContract")]
     interface NeoCashContract {
-        bool changeNumber(System.Numerics.BigInteger positiveNumber);
-        byte[] getNumber();
+        bool changeAddress(byte[] Name, byte[] Address);
+        byte[] getAddress(byte[] Name);
         void updateContract(byte[] nefFile, string manifest);
+        bool verify();
         interface Events {
-            void NumberChanged(Neo.UInt160 arg1, System.Numerics.BigInteger arg2);
+            void AddressChanged(byte[] arg1, byte[] arg2);
         }
     }
 }

@@ -9,29 +9,24 @@ using Neo.SmartContract.Framework.Services;
 
 namespace NeoCash
 {
-    [DisplayName("YourName.NeoCashContract")]
-    [ManifestExtra("Author", "Your name")]
-    [ManifestExtra("Email", "your@address.invalid")]
-    [ManifestExtra("Description", "Describe your contract...")]
+    [DisplayName("aymericb.NeoCashContract2")]
+    [ManifestExtra("Author", "Aymeric B")]
+    [ManifestExtra("Email", "aymericb87@gmail.som")]
+    [ManifestExtra("Description", "Store Neo N3 addresses corresponding to Twitter account names")]
     public class NeoCashContract : SmartContract
     {
         private static StorageMap ContractStorage => new StorageMap(Storage.CurrentContext, "NeoCashContract");
         private static StorageMap ContractMetadata => new StorageMap(Storage.CurrentContext, "Metadata");
 
-        private static Transaction Tx => (Transaction) Runtime.ScriptContainer;
+        private static Transaction Tx => (Transaction)Runtime.ScriptContainer;
 
-        [DisplayName("NumberChanged")]
-        public static event Action<UInt160, BigInteger> OnNumberChanged;
+        [DisplayName("AddressChanged")]
+        public static event Action<ByteString, ByteString> OnAddressChanged;
 
-        public static bool ChangeNumber(BigInteger positiveNumber)
+        public static bool ChangeAddress(ByteString Name, ByteString Address)
         {
-            if (positiveNumber < 0)
-            {
-                throw new Exception("Only positive numbers are allowed.");
-            }
-
-            ContractStorage.Put(Tx.Sender, positiveNumber);
-            OnNumberChanged(Tx.Sender, positiveNumber);
+            ContractStorage.Put(Name, Address);
+            OnAddressChanged(Name, Address);
             return true;
         }
 
@@ -40,13 +35,13 @@ namespace NeoCash
         {
             if (!update)
             {
-                ContractMetadata.Put("Owner", (ByteString) Tx.Sender);
+                ContractMetadata.Put("Owner", (ByteString)Tx.Sender);
             }
         }
 
-        public static ByteString GetNumber()
+        public static ByteString GetAddress(ByteString Name)
         {
-            return ContractStorage.Get(Tx.Sender);
+            return ContractStorage.Get(Name);
         }
 
         public static void UpdateContract(ByteString nefFile, string manifest)
@@ -57,6 +52,11 @@ namespace NeoCash
                 throw new Exception("Only the contract owner can do this");
             }
             ContractManagement.Update(nefFile, manifest, null);
+        }
+
+        public static bool Verify()
+        {
+            return true;
         }
     }
 }
