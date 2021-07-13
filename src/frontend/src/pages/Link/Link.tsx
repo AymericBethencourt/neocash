@@ -25,7 +25,7 @@ export const Link = () => {
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
 
-  //0x333da375c2bac783276a953dd65028771e667e26
+  const tweetPattern = /status\/(.*)?\?/gm
 
   async function linkUsername() {
     try {
@@ -38,23 +38,26 @@ export const Link = () => {
 
       const scriptHash = await neolineN3.AddressToScriptHash({ address: Object.keys(bal)[0] })
 
-      console.log(scriptHash)
+      let tweetId
+      const tweetFound = tweetPattern.exec(url)
+      if (tweetFound && tweetFound.length >= 2) tweetId = tweetFound[1]
+      console.log(tweetId)
 
       neolineN3
         .invoke({
-          scriptHash: '0x333da375c2bac783276a953dd65028771e667e26',
-          operation: 'changeAddress',
+          scriptHash: '0x515f29331f83541dbcd2b5e8fa953e6cf7d53bb5',
+          operation: 'createRequest',
           args: [
             {
-              type: 'ByteArray',
-              value: 'test2',
+              type: 'String',
+              value: tweetId,
             },
             {
-              type: 'ByteArray',
-              value: 'NhhNe4cEWS8tLtEnMyWAL9mxTx3Kvsqv9a',
+              type: 'String',
+              value: username,
             },
           ],
-          fee: '0.01',
+          fee: '0.1',
           broadcastOverride: false,
           signers: [
             {

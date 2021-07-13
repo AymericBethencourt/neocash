@@ -19,7 +19,7 @@ router.get(
     })
     
     ctx.status = 200
-    ctx.body = resp.data.data.text
+    ctx.body = { address: resp.data.data.text}
 
     await next()
   },

@@ -15,7 +15,7 @@ $(document).ready(function () {
           if (username) username = username.replace('@', '');
 
           $(this)
-            .append(`<a class="neocash-tip" href="https://neocash.io/buy?twitter=${username}&currency=MATIC&amount=0.1&title=Twitter%20Tip&description=Support%20this%20user%20with%20a%20tip&image=https://hub.textile.io/thread/bafkv4t2uqgblrc2gsgjrgc7gg2hthcu5jhnedx46gfpjj3axe6ahtuy/buckets/bafzbeig3vsanyp6xhzyduubyqh3zas4qapbc7hv75lxsngwrxxlnvfgtli/twitter2.png" target="_blank" style="color: #6e767d;
+            .append(`<a class="neocash-tip" href="https://neocash.io/buy?twitter=${username}&currency=GAS&amount=1&title=Twitter%20Tip&description=Support%20this%20user%20with%20a%20tip&image=https://hub.textile.io/thread/bafkv4t2uqgblrc2gsgjrgc7gg2hthcu5jhnedx46gfpjj3axe6ahtuy/buckets/bafzbeig3vsanyp6xhzyduubyqh3zas4qapbc7hv75lxsngwrxxlnvfgtli/twitter2.png" target="_blank" style="color: #6e767d;
           position: absolute;
           bottom: 13px;
           right: 30px;
@@ -34,7 +34,7 @@ $(document).ready(function () {
           let username = encodeURI($(this).find('h4').eq(0).text());
           $(this).css('position', 'relative');
           $(this)
-            .append(`<a class="neocash-tip" href="https://neocash.io/buy?facebook=${username}&currency=MATIC&amount=0.1&title=Facebook%20Tip&description=Support%20this%20user%20with%20a%20tip&image=https://hub.textile.io/thread/bafkv4t2uqgblrc2gsgjrgc7gg2hthcu5jhnedx46gfpjj3axe6ahtuy/buckets/bafzbeig3vsanyp6xhzyduubyqh3zas4qapbc7hv75lxsngwrxxlnvfgtli/facebook2.png" target="_blank" style="color: #6e767d;
+            .append(`<a class="neocash-tip" href="https://neocash.io/buy?facebook=${username}&currency=GAS&amount=1&title=Facebook%20Tip&description=Support%20this%20user%20with%20a%20tip&image=https://hub.textile.io/thread/bafkv4t2uqgblrc2gsgjrgc7gg2hthcu5jhnedx46gfpjj3axe6ahtuy/buckets/bafzbeig3vsanyp6xhzyduubyqh3zas4qapbc7hv75lxsngwrxxlnvfgtli/facebook2.png" target="_blank" style="color: #6e767d;
           position: absolute;
           bottom: 13px;
           right: 30px;
@@ -51,7 +51,7 @@ $(document).ready(function () {
           let username = encodeURI($(this).find('yt-formatted-string').eq(0).text());
           $(this).css('position', 'relative');
           $(this)
-            .append(`<a class="neocash-tip" href="https://neocash.io/buy?youtube=${username}&currency=MATIC&amount=0.1&title=Youtube%20Tip&description=Support%20this%20user%20with%20a%20tip&image=https://hub.textile.io/thread/bafkv4t2uqgblrc2gsgjrgc7gg2hthcu5jhnedx46gfpjj3axe6ahtuy/buckets/bafzbeig3vsanyp6xhzyduubyqh3zas4qapbc7hv75lxsngwrxxlnvfgtli/youtube2.png" target="_blank" style="color: #6e767d;
+            .append(`<a class="neocash-tip" href="https://neocash.io/buy?youtube=${username}&currency=GAS&amount=1&title=Youtube%20Tip&description=Support%20this%20user%20with%20a%20tip&image=https://hub.textile.io/thread/bafkv4t2uqgblrc2gsgjrgc7gg2hthcu5jhnedx46gfpjj3axe6ahtuy/buckets/bafzbeig3vsanyp6xhzyduubyqh3zas4qapbc7hv75lxsngwrxxlnvfgtli/youtube2.png" target="_blank" style="color: #6e767d;
           position: absolute;
           bottom: -10px;
           right: -40px;

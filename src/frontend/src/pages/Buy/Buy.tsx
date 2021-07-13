@@ -1,6 +1,5 @@
 import { showToaster } from 'app/App.components/Toaster/Toaster.actions'
 import { ERROR, SUCCESS } from 'app/App.components/Toaster/Toaster.constants'
-import axios from 'axios'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -77,7 +76,7 @@ export const Buy = () => {
 
         // neolineN3
         //   .invoke({
-        //     scriptHash: '0x333da375c2bac783276a953dd65028771e667e26',
+        //     scriptHash: '0x515f29331f83541dbcd2b5e8fa953e6cf7d53bb5',
         //     operation: 'getAddress',
         //     args: [
         //       {
@@ -101,12 +100,12 @@ export const Buy = () => {
         //   })
         neolineN3
           .getStorage({
-            scriptHash: '0x333da375c2bac783276a953dd65028771e667e26',
+            scriptHash: '0x515f29331f83541dbcd2b5e8fa953e6cf7d53bb5',
             key: 'ContractStorage',
           })
           .then((result: any) => {
-            const value = result
-            console.log('Storage value: ' + value)
+            console.log('Storage value: ' + result)
+            if (username) setAddress(result[username])
           })
           .catch(({ type, description, data }: any) => {
             dispatch(showToaster(ERROR, type, description))

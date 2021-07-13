@@ -1,0 +1,171 @@
+[
+  {
+    "contract": "NeoCashContract",
+    "operation": "updateContract",
+    "args": [
+      "NEF3Neo.Compiler.CSharp 3.0.0-rc3\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0002X�\u0017\u0011~ �\u0010r��q�݉�|K��\u0007request\u0005\u0000\u0000\u000f���CF�S*%�ėݭ�d7���\u0006update\u0003\u0000\u0000\u000f\u0000\u0000�\u001d\u0002\f\u000fNeoCashContractA��g�\u0012�@\u0012�@A��g�@\f\bMetadataA��g�\u0012�@A-Q\b0@A-Q\b0@!XA��g�A�]�1#\u0005\u0000\u0000\u0000@A�]�1@W\u0000\u0001!\u0011\u0010\f\bcallback\f\u0004$..*\f\u0017https://httpbin.org/get7\u0000\u0000@7\u0000\u0000@W\u0000\u0004!A9Sn<\f\u0014X�\u0017\u0011~ �\u0010r��q�݉�|K���'\u0015\u0000\u0000\u0000\f Unauthorized!:!{�(XA��g�A�?\u0018�@A9Sn<@\f\u0014X�\u0017\u0011~ �\u0010r��q�݉�|K��@A�?\u0018�@�(@W\u0000\u0002!5\u0002���xy\u0012M\u0011�Q�Q\u0010�A�?\u0018��Jx�Jy�\f\u000eAddressChangedA�\u0001oa\u0011� #\u0005\u0000\u0000\u0000@\u0012M\u0011�Q�Q\u0010�A�?\u0018�@W\u0000\u0002!y�'(\u0000\u0000\u0000!5����\f\u0005Owner5����\u0013�\u0012M\u0011�Q�Q\u0010�A�?\u0018�!!@W\u0000\u0001!5����xK\u0011�P�P\u0010�A�]�1#\u0005\u0000\u0000\u0000@K\u0011�P�P\u0010�A�]�1@W\u0001\u0002!5|���\f\u0005OwnerK\u0011�P�P\u0010�A�]�1p5t���\u0013�h��'-\u0000\u0000\u0000!\f#Only the contract owner can do this:!!\u000byx7\u0001\u0000@7\u0001\u0000@!\u0011� #\u0005\u0000\u0000\u0000@V\u0001\f RequstData`@a��d",
+      {
+        "name": "NeoCashContract",
+        "groups": [],
+        "features": {},
+        "supportedstandards": [],
+        "abi": {
+          "methods": [
+            {
+              "name": "getRequstData",
+              "offset": 64,
+              "safe": false,
+              "returntype": "String",
+              "parameters": []
+            },
+            {
+              "name": "createRequest",
+              "offset": 88,
+              "safe": false,
+              "returntype": "Void",
+              "parameters": [
+                {
+                  "name": "tweetId",
+                  "type": "String"
+                }
+              ]
+            },
+            {
+              "name": "callback",
+              "offset": 143,
+              "safe": false,
+              "returntype": "Void",
+              "parameters": [
+                {
+                  "name": "url",
+                  "type": "String"
+                },
+                {
+                  "name": "userData",
+                  "type": "ByteArray"
+                },
+                {
+                  "name": "code",
+                  "type": "Integer"
+                },
+                {
+                  "name": "result",
+                  "type": "ByteArray"
+                }
+              ]
+            },
+            {
+              "name": "changeAddress",
+              "offset": 250,
+              "safe": false,
+              "returntype": "Boolean",
+              "parameters": [
+                {
+                  "name": "Name",
+                  "type": "ByteArray"
+                },
+                {
+                  "name": "Address",
+                  "type": "ByteArray"
+                }
+              ]
+            },
+            {
+              "name": "_deploy",
+              "offset": 327,
+              "safe": false,
+              "returntype": "Void",
+              "parameters": [
+                {
+                  "name": "data",
+                  "type": "Any"
+                },
+                {
+                  "name": "update",
+                  "type": "Boolean"
+                }
+              ]
+            },
+            {
+              "name": "getAddress",
+              "offset": 375,
+              "safe": false,
+              "returntype": "ByteArray",
+              "parameters": [
+                {
+                  "name": "Name",
+                  "type": "ByteArray"
+                }
+              ]
+            },
+            {
+              "name": "updateContract",
+              "offset": 418,
+              "safe": false,
+              "returntype": "Void",
+              "parameters": [
+                {
+                  "name": "nefFile",
+                  "type": "ByteArray"
+                },
+                {
+                  "name": "manifest",
+                  "type": "String"
+                }
+              ]
+            },
+            {
+              "name": "verify",
+              "offset": 515,
+              "safe": false,
+              "returntype": "Boolean",
+              "parameters": []
+            },
+            {
+              "name": "_initialize",
+              "offset": 525,
+              "safe": false,
+              "returntype": "Void",
+              "parameters": []
+            }
+          ],
+          "events": [
+            {
+              "name": "AddressChanged",
+              "parameters": [
+                {
+                  "name": "arg1",
+                  "type": "ByteArray"
+                },
+                {
+                  "name": "arg2",
+                  "type": "ByteArray"
+                }
+              ]
+            }
+          ]
+        },
+        "permissions": [
+          {
+            "contract": "0xfe924b7cfe89ddd271abaf7210a80a7e11178758",
+            "methods": [
+              "request"
+            ]
+          },
+          {
+            "contract": "0xfffdc93764dbaddd97c48f252a53ea4643faa3fd",
+            "methods": [
+              "update"
+            ]
+          }
+        ],
+        "trusts": [],
+        "extra": {
+          "Author": "Aymeric B",
+          "Email": "aymericb87@gmail.som",
+          "Description": "Store Neo N3 addresses corresponding to Twitter account names"
+        }
+      }
+    ]
+  }
+]

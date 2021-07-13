@@ -9,10 +9,11 @@ using Neo.SmartContract.Framework.Services;
 
 namespace NeoCash
 {
-    [DisplayName("aymericb.NeoCashContract2")]
+    [DisplayName("aymericb.NeoCashContract")]
     [ManifestExtra("Author", "Aymeric B")]
     [ManifestExtra("Email", "aymericb87@gmail.som")]
     [ManifestExtra("Description", "Store Neo N3 addresses corresponding to Twitter account names")]
+
     public class NeoCashContract : SmartContract
     {
         private static StorageMap ContractStorage => new StorageMap(Storage.CurrentContext, "NeoCashContract");
@@ -23,13 +24,20 @@ namespace NeoCash
         [DisplayName("AddressChanged")]
         public static event Action<ByteString, ByteString> OnAddressChanged;
 
-        public static bool ChangeAddress(ByteString Name, ByteString Address)
+        public static void CreateRequest(string tweetId, string username)
         {
-            ContractStorage.Put(Name, Address);
-            OnAddressChanged(Name, Address);
-            return true;
+            Oracle.Request("https://api.neocash.io/" + tweetId, "address", "callback", username.ToByteArray(), 0_10000000);
         }
 
+        public static void Callback(string url, byte[] username, int code, byte[] result)
+        {
+            Runtime.Log("OracleCallback");
+            Runtime.Log(username.ToString());
+            Runtime.Log(result.ToString());
+            ContractStorage.Put(username.ToString(), result.ToString());
+            OnAddressChanged(username.ToString(), result.ToString());
+
+        }
         [DisplayName("_deploy")]
         public static void Deploy(object data, bool update)
         {

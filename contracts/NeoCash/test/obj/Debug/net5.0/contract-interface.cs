@@ -13,7 +13,8 @@ namespace NeoCashTests {
     #endif
     [System.ComponentModel.Description("NeoCashContract")]
     interface NeoCashContract {
-        bool changeAddress(byte[] Name, byte[] Address);
+        void createRequest(string tweetId, string username);
+        void callback(string url, byte[] username, System.Numerics.BigInteger code, byte[] result);
         byte[] getAddress(byte[] Name);
         void updateContract(byte[] nefFile, string manifest);
         bool verify();
